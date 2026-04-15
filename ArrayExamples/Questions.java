@@ -2,9 +2,10 @@ import java.util.Arrays;
 
 public class Questions {
     public static void main(String args[]) {
-        int[] nums = { -1, 0, 1, 2, -1, -4 };
+        int[] nums = {1,2,3};
         // System.out.println(twiceValueOrDistinct(nums));
-        System.out.print(targetNumber(nums, 0));
+        System.out.println(sumOfUnique(nums));
+        // System.out.print(targetNumber(nums, 0));
     }
 
     // Q1: Given an integer array nums, return true if any value appears at least
@@ -43,5 +44,21 @@ public class Questions {
             high--;
         }
         return -1;
+    }
+
+    public static int sumOfUnique(int[] nums) {
+        // int sum = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if(nums[i] == nums[j]) {
+                   break;
+                } else {
+                    count++;
+                }
+            }
+            
+        }
+        return count;
     }
 }

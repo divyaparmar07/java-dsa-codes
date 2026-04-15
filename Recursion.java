@@ -43,7 +43,7 @@ public class Recursion {
         return fn;
     }
 
-    // Print sum of N Natural Numbers Time complexity - O(n) & Space Complexity -
+    // Print sum of N Natural Numbers Time complexity - O(n) & Space Complexity - O(n)
     // O(n)
     public static int sumOfNumber(int n) {
         if (n == 1) { // Base case
@@ -53,7 +53,7 @@ public class Recursion {
         return sum;
     }
 
-    // Print N fibonacci Number - Time complexity - O(n) & Space Complexity - O(2^n)
+    // Print N fibonacci Number - Time complexity - O(2 to the power n) & Space Complexity - O(2^n)=O(n)
     // Exponential time
     public static int fibonacciSeries(int n) {
         // f(0) = 0 and f(1) = 1
@@ -122,18 +122,19 @@ public class Recursion {
         return isFound;
     }
 
-    // finding power of n - Time complexity O(n)
+    // finding power of n - Time complexity O(n) Space complexity - O(n)
     public static int powerOfN(int x, int n) {
         if (n == 0) { // Base condition
             return 1;
         }
-        // if(n == 1) { // Bae Condition
+        // if(n == 1) { // Base Condition
         // return x;
         // }
         return x * powerOfN(x, n - 1);
     }
 
-    // Time complexity = O(logn)
+    // Time complexity = O(logn) & Space Complexity = O(logn)
+    // if we are dividing one problem to n/2 then click in mind that tc will be logn
     public static int optimizedPowerOfN(int x, int n) {
         if (n == 0) { // Base Condition
             return 1;
@@ -299,3 +300,16 @@ public class Recursion {
         return revNum(num, rev);
     }
 }
+
+// How to approach a questions 
+// 1. Brute Force (logical)
+// 2. Then Optimized (Time)
+// 3. On
+//
+// Online judge = 1 sec = 10^8 operations we can perform
+//10^6 = Linear search 10^6
+// Binary search log(10^6) = 20 operations 
+
+// n=10^9 linear = 10^9 binary = log(10^9) = 30 operations
+// in linear --> TIme limit exceeded error
+//10^9 --> then use binary search

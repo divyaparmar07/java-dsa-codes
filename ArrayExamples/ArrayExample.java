@@ -2,16 +2,16 @@ public class ArrayExample {
     public static void main(String[] args) {
         int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
         // int target = 0;
-        int[] prices = { 7, 6, 4, 3, 1 };
+        // int[] prices = { 7, 6, 4, 3, 1 };
         // reverseArray(nums);
         // for(int i=0;i<nums.length;i++){
         // System.out.print(nums[i]+ " ");
         // }
-        // pairArray(nums);
-        printSubarrays(nums);
+        pairArray(nums);
+        // printSubarrays(nums);
         // System.out.println("index: "+findTargetElementInArray(nums,target));
-        System.out.println("Trapped Rainwater: " + trappedRainwater(nums));
-        System.out.println("Maximum profit: " + buyAndSellStocks(prices));
+        // System.out.println("Trapped Rainwater: " + trappedRainwater(nums));
+        // System.out.println("Maximum profit: " + buyAndSellStocks(prices));
     }
 
     public static void reverseArray(int[] arr) {
@@ -48,12 +48,12 @@ public class ArrayExample {
         }
     }
 
-    // Using Brute Force
+    // Using Brute Force - Basic solution TC- O(n3)
     public static int maxOfSubArrays(int[] arr) {
         int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j < arr.length; j++) {
-                int sum = 0;
+                int sum = 0; // current sum
                 for (int k = i; k <= j; k++) {
                     sum += arr[k];
                 }
@@ -68,7 +68,8 @@ public class ArrayExample {
         return max;
     }
 
-    // Using Prefix sum technique
+    // Using Prefix sum technique - TC - O(n2)
+    // prefix[end] - prefix[start - 1]
     public static int maxOfSubArraysUsingPrefixArray(int[] arr) {
         int max = Integer.MIN_VALUE;
         int[] prefix = new int[arr.length];
@@ -90,7 +91,8 @@ public class ArrayExample {
         return max;
     }
 
-    // Using kadane's Algorithm only for positive numbers
+    // Using kadane's Algorithm only for positive numbers - TC O(n)
+    // HW - write condition for negative number what if we have all nums are negative.
     public static int maxOfSumArraysUsingKadane(int[] arr) {
         int currentSum = 0;
         int maxSum = Integer.MIN_VALUE;

@@ -5,10 +5,12 @@ public class BitManipulationExample {
         Scanner sc = new Scanner(System.in);
         // int num = sc.nextInt();
         // OddEven(num);
+        System.out.println(countSetNumber(12));
         // System.out.println(clearRangeOfBits(10,2,4)); //n=2515, i=2, j=7 answer=2307
         // System.out.println(fastExpo(5,3));
-        System.out.println(XorOfX(567));
+        // System.out.println(XorOfX(567));
         sc.close();
+        swap(10, 30);
     }
 
     // Check if number is Odd or Even
@@ -116,4 +118,13 @@ public class BitManipulationExample {
         return x ^ x;
     }
     // Modular Exponentiation - a power n % x - Google
+
+    // Swap two numbers without using any third variable.
+    public static void swap(int a, int b) {
+        System.out.println("Before swap " + a + " " + b);
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        System.out.print("After swap " + a + " " + b);
+    }
 }
