@@ -1,17 +1,20 @@
 public class ArrayExample {
     public static void main(String[] args) {
-        int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
+        // int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
+        int[] arr = {-2,1,-3,4,-1,2,1,-5,4};
+;
         // int target = 0;
         // int[] prices = { 7, 6, 4, 3, 1 };
         // reverseArray(nums);
         // for(int i=0;i<nums.length;i++){
         // System.out.print(nums[i]+ " ");
         // }
-        pairArray(nums);
+        // pairArray(nums);
         // printSubarrays(nums);
         // System.out.println("index: "+findTargetElementInArray(nums,target));
         // System.out.println("Trapped Rainwater: " + trappedRainwater(nums));
         // System.out.println("Maximum profit: " + buyAndSellStocks(prices));
+        System.out.print(maxOfSumArraysUsingKadane(arr));
     }
 
     public static void reverseArray(int[] arr) {
@@ -105,6 +108,38 @@ public class ArrayExample {
         }
         return maxSum;
     }
+
+    // With Negative numbers solution
+    // class Solution {
+    // public int maxSubArray(int[] nums) {
+    //      int currentSum = 0;
+    //     int maxSum = Integer.MIN_VALUE;
+    //     int negNum = 0;
+    //     for (int i = 0; i < nums.length; i++) {
+    //         if (nums[i] < 0) {
+    //             negNum++;
+    //         }
+    //     }
+    //     if (negNum == nums.length) {
+    //         for (int i = 0; i < nums.length; i++) {
+    //             currentSum += nums[i];
+    //             if (currentSum < 0) {
+    //                 currentSum = Math.max(currentSum, nums[i]);
+    //             }
+    //             maxSum = Math.max(maxSum, currentSum);
+    //         }
+    //     } else {
+    //         for (int i = 0; i < nums.length; i++) {
+    //             currentSum += nums[i];
+    //             if (currentSum < 0) {
+    //                 currentSum = 0;
+    //             }
+    //             maxSum = Math.max(maxSum, currentSum);
+    //         }
+    //     }
+    //     return maxSum;
+    // }
+    // }
 
     // Trapped RainWater problem
     public static int trappedRainwater(int height[]) {

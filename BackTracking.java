@@ -3,9 +3,10 @@ public class BackTracking {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
         // printArr(arr);
-        String str = "abc";
-        findSubsets(str, new String(""), 0);
-    } 
+        // String str = "abc";
+        // findSubsets(str, new String(""), 0);
+        // findPermutation(str, "");
+    }
 
     // Time Complexity = O(n) & Space Complexity = O(n)
     // n steps perform up and return n steps perform
@@ -50,4 +51,23 @@ public class BackTracking {
         // No choice
         findSubsets(str, ans, i+1);
     }
+
+    // Q2: find & print all permutations of the string
+    // Time Complexity - O(n * n!)
+    public static void findPermutation(String str, String ans) {
+        // Base case
+        if (str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        // Recursion
+        for (int i = 0; i <str.length(); i++) {
+            char curr = str.charAt(i);
+            // "abcde" ==> "ab" + "de" = "abde"
+            String newStr = str.substring(0, i) + str.substring(i+1); 
+            findPermutation(newStr, ans+curr);
+        }
+    }
+
 }
