@@ -8,7 +8,7 @@ public class NQueenProblem {
     static int count = 0;
     public static void main(String[] args) {
         
-        int n = 2; // output 2 boards n = 5 then 10 boards printing
+        int n = 4; // output 2 boards n = 5 then 10 boards printing
         char board[][] = new char[n][n];
         //initialize
         for (int i = 0; i < n; i++) {
@@ -70,7 +70,7 @@ public class NQueenProblem {
     //     }
     // }
 
-    // Check if problem can be solved & print only 1 solution to N Queens Problem
+    // Check if problem can be solved & print only  1 solution to N Queens Problem
     public static boolean nQueens(char board[][], int row) {
         //base
         if (row == board.length) {
