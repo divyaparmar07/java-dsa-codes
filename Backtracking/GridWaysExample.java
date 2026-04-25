@@ -1,5 +1,3 @@
-package OOP;
-
 public class GridWaysExample {
     // Time complexity = O(2^(n+m))
     public static int gridWays(int i, int j, int n, int m) {

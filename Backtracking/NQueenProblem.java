@@ -1,5 +1,3 @@
-package OOP;
-
 // three ways 
 // 1. all possible
 // 2. count ways
