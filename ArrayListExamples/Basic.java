@@ -43,5 +43,50 @@ public class Basic {
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i) + " ");
         }
+
+        System.out.println();
+
+        // int[] nums = {1,3,2};
+        ArrayList<Integer> nums = new ArrayList<>();
+        nums.add(1);
+        nums.add(2);
+        nums.add(2);
+        nums.add(3);
+        System.out.println(isMonotonic(nums));
     }
+
+    // Using Array
+    // public static boolean isMonotonic(int[] nums) {
+    //     int incre = 0, decre = 0;
+    //     for (int i = 0; i < nums.length - 1; i++) {
+    //         if (i <= i+1 && nums[i] <= nums[i+1]) {
+    //             incre++;
+    //         }
+    //         if (i <= i+1 && nums[i] >= nums[i+1]) {
+    //             decre++;
+    //         }
+    //     }
+    //     System.out.println(incre + " " + decre);
+    //     if(incre == nums.length - 1 || decre == nums.length - 1) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+    public static boolean isMonotonic(ArrayList<Integer> nums) {
+        int incre = 0, decre = 0;
+        for (int i = 0; i < nums.size() - 1; i++) {
+            if (i <= i+1 && nums.get(i) <= nums.get(i+1)) {
+                incre++;
+            }
+            if (i <= i+1 && nums.get(i) >= nums.get(i+1)) {
+                decre++;
+            }
+        }
+        if (incre == nums.size() - 1 || decre == nums.size() - 1) {
+            return true;
+        }
+        return false;
+    }
+
 }
