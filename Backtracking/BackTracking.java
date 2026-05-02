@@ -3,8 +3,8 @@ public class BackTracking {
         // int arr[] = new int[5];
         // changeArr(arr, 0, 1);
         // printArr(arr);
-        // String str = "abc";
-        // findSubsets(str, new String(""), 0);
+        String str = "abc";
+        findSubsets(str, new String(""), 0);
         // findPermutation(str, "");
     }
 
