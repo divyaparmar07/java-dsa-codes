@@ -1,37 +1,50 @@
 package Stack;
 
-import java.util.ArrayList;
+public class StackUsingLinkedlist {
+    static class Node {
+        int data;
+        Node next;
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
 
-public class StackUsingArrayList {
     static class Stack {
-        static ArrayList<Integer> list = new ArrayList<>();
+        static Node head = null;
 
         public static boolean isEmpty() {
-            return list.size() == 0;
+            return head == null;
         }
 
-        public static void push(int val) {
-            list.add(val);
+        public static void push(int data) {
+            Node newNode = new Node(data);
+            if (isEmpty()) {
+                head = newNode;
+                return;
+            }
+
+            newNode.next = head;
+            head = newNode;
         }
 
         public static int pop() {
-            // if stack is empty then we can't pop element
             if (isEmpty()) {
                 return -1;
             }
-            int top = list.get(list.size() - 1);
-            list.remove(list.size() - 1);
+            int top = head.data;
+            head = head.next;
             return top;
         }
 
         public static int peek() {
-            // if stack is empty then we can't print
             if (isEmpty()) {
                 return -1;
             }
-            return list.get(list.size() - 1);
+            return head.data;
         }
     }
+
     public static void main(String args[]) {
         Stack s = new Stack();
         s.push(1);
