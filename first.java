@@ -1,5 +1,8 @@
 // import java.util.Scanner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class first {
     public static void main(String[] args) {
         // System.out.println("Hello World");
@@ -143,8 +146,10 @@ public class first {
         //     }
         //     System.out.println();
         // }
-        int[] arr = {1,2,3,4,5};
-        subArrays(arr);
+        // int[] arr = {1,2,3,4,5};
+        // subArrays(arr);
+        int[] arr = {3,2,3};
+        System.out.println(majorityElement(arr));
     }
 
     // prime number function
@@ -182,6 +187,54 @@ public class first {
         }
     }
 
+    public static int majorityElement(int nums[]) {
+        int ans = 0, freq = Integer.MIN_VALUE;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
+            // System.out.println(entry.getKey() + " " + entry.getValue());
+            if (entry.getValue() > ans) {
+                // System.out.println(entry.getKey() + " " + entry.getValue());
+                ans = entry.getValue();
+                freq = entry.getKey();
+            }
+        }
+
+        // int temp[] = new int[5*104];
+        // int low = 0, high = nums.length - 1;
+        // //counting sort
+        // while (low <= high) {
+        //     if (low == high){
+        //         temp[nums[low]]++;
+        //     } else {
+        //         temp[nums[low]]++;
+        //         temp[nums[high]]++;
+        //     }
+        //     low++;
+        //     high--;
+        // }
+        // low = 0;
+        // high = temp.length - 1;
+        // int max = Integer.MIN_VALUE;
+        // int index = 0;
+        // while(low <= high) {
+        //     if(temp[low] > max) {
+        //         max = temp[low];
+        //         index = low;
+        //     }
+        //     if(temp[high]>max) {
+        //         max = temp[high];
+        //         index = high;
+        //     }
+        //     low++;
+        //     high--;
+        // }
+        return freq;
+    }
 }
 
 //  20 12 15 9 3 10
@@ -189,3 +242,4 @@ public class first {
 //  3 9 15 12 20 10 - 2 iteration
 //  3 9 10 12 20 15  -3 iteration
 //  
+

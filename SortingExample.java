@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class SortingExample {
     public static void main(String[] args) {
         // int arr[] = { 6, 3, 9, 10, 5, 2, 8 }; // Odd and even elements both are working
@@ -6,11 +9,12 @@ public class SortingExample {
         // mergeSort(arr, 0, arr.length-1);
         // quickSort(arr, 0, arr.length-1);
         // printArray(arr);
-        int arr[] = {4, 5, 6, 7, 0, 1, 2};
+        // int arr[] = {4, 5, 6, 7, 0, 1, 2};
+        int arr[] = {3,4,5,1,2};
         // int arr[] = {1, 2, 3, 4, 5, 6, 7};
-        int target = 6;
+        // int target = 6;
         // System.out.println(binSearch(arr, target));
-        System.out.println(search(arr, target, 0, arr.length-1));
+        // System.out.println(search(arr, target, 0, arr.length-1));
         // System.out.println(searchUsingIteration(arr, target));
         // mergeSortInArrayOfStrings(arr);
         // printArrayOfString(arr);
@@ -18,6 +22,7 @@ public class SortingExample {
         // countingSort(arr);
         // printArray(arr);
         // System.out.println(majorityElement(arr));
+        System.out.println(findMin(arr));
     }
 
     // binary search - condition is only works on sorted array - Time Complexity O(logn)
@@ -279,36 +284,88 @@ public class SortingExample {
 
     }
 
+    // [3,3,4] 3/2 = more than > 1 = 3 (2)
+    // Given an array nums of size n, return the majority element.
+
+    // The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+    // Example 1:
+    // Input: nums = [3,2,3]  3/2 = more than > 1 = 3(2)
+    // Output: 3
+    // Example 2:
+    // Input: nums = [2,2,1,1,1,2,2] = 7/2 = 3 more than > 3 = 2 (4)
+    // Output: 2
+    // Constraints:
+    // n == nums.length
+    // 1 <= n <= 5 * 104
+    // -109 <= nums[i] <= 109
+    // The input is generated such that a majority element will exist in the array.
+    // Follow-up: Could you solve the problem in linear time and in O(1) space?
     public static int majorityElement(int nums[]) {
-        int temp[] = new int[nums.length + 1];
+        int ans = 0, freq = Integer.MIN_VALUE;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
+            // System.out.println(entry.getKey() + " " + entry.getValue());
+            if (entry.getValue() > ans) {
+                // System.out.println(entry.getKey() + " " + entry.getValue());
+                ans = entry.getValue();
+                freq = entry.getKey();
+            }
+        }
+        return freq;
+        // int temp[] = new int[5*104];
+        // int low = 0, high = nums.length - 1;
+        // //counting sort
+        // while (low <= high) {
+        //     if (low == high){
+        //         temp[nums[low]]++;
+        //     } else {
+        //         temp[nums[low]]++;
+        //         temp[nums[high]]++;
+        //     }
+        //     low++;
+        //     high--;
+        // }
+        // low = 0;
+        // high = temp.length - 1;
+        // int max = Integer.MIN_VALUE;
+        // int index = 0;
+        // while(low <= high) {
+        //     if(temp[low] > max) {
+        //         max = temp[low];
+        //         index = low;
+        //     }
+        //     if(temp[high]>max) {
+        //         max = temp[high];
+        //         index = high;
+        //     }
+        //     low++;
+        //     high--;
+        // }
+        // return index;
+    }
+    
+    // 3 4 5 1 2
+    // 0 1 2 3 4
+    // low = 3 high = 4
+    // 3 + (4 - 3) / 2 = 3 + (1 / 2) = 4 / 0 = 4
+    // 
+    public static int findMin(int[] nums) {
         int low = 0, high = nums.length - 1;
-        //counting sort
-        while (low <= high) {
-            if (low == high){
-                temp[nums[low]]++;
+		while (low < high) {
+            int mid = low + (high - low) / 2;
+            System.out.println(low + " " + mid + " " + high);
+
+            if (nums[mid] > nums[high]) {
+                low = mid + 1;
             } else {
-                temp[nums[low]]++;
-                temp[nums[high]]++;
+                high = mid;
             }
-            low++;
-            high--;
         }
-        low = 0;
-        high = temp.length - 1;
-        int max = Integer.MIN_VALUE;
-        int index = 0;
-        while(low <= high) {
-            if(temp[low] > max) {
-                max = temp[low];
-                index = low;
-            }
-            if(temp[high]>max) {
-                max = temp[high];
-                index = high;
-            }
-            low++;
-            high--;
-        }
-        return index;
+        return nums[low];
     }
 }
