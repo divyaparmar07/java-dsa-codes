@@ -66,7 +66,7 @@ public class LinkedList {
 
    public void add(int index, int data) {
         // if my index is 0 or head
-        if(index == 0) {
+        if(index == 0) {    
             addFirst(data);
             return;
         }
