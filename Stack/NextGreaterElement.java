@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class NextGreaterElement {
     public static void main(String args[]) {
-        // Time complexity = O(n)
+        // Time complexity = O(n) - Greater element in Right
         int arr[] = {6, 8, 0, 1, 3};
         Stack<Integer> s = new Stack<>();
         int nextGreater[] = new int[arr.length];

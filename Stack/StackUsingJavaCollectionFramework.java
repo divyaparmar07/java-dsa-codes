@@ -88,4 +88,32 @@ public class StackUsingJavaCollectionFramework {
         return curr.toString();
     }
 
+    public static int calPoints(String[] operations) {
+        int record = 0;
+        Stack<Integer> s = new Stack<>();
+        for (int i = 0; i < operations.length; i++) {
+            if (operations[i].equals("C")) {
+                record -= s.pop();
+                System.out.println("C " + s);
+            } else if (operations[i].equals("D")) {
+                record += 2 * s.peek();
+                s.push(2 * s.peek());
+                System.out.println("D " + s);
+            } else if (operations[i].equals("+")) {
+                record += s.peek();
+                int temp = s.pop();
+                int temp2 = s.peek();
+                record += s.peek();
+                s.push(temp);
+                s.push(temp + temp2);
+                System.out.println("+ " + s);
+            } else {
+                s.push(Integer.valueOf(operations[i]));
+                record += Integer.valueOf(operations[i]);
+                System.out.println("else" + s);
+            }
+        }
+        return record;
+    }
+
 }
