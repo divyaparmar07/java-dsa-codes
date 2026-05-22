@@ -30,7 +30,7 @@ public class LongestCommonPrefix {
             }
             if (val > 0) {
                 // Length of the matched prefix using log10 to determine the number of digits
-                System.out.println( "value " +val + " " + longestPrefix + " " + (int) Math.log10(val) + 1);
+                System.out.println( "value " +val + " " + longestPrefix + " " + (int) Math.log10(val));
                 longestPrefix = Math.max(
                     longestPrefix,
                     (int) Math.log10(val) + 1
@@ -44,8 +44,8 @@ public class LongestCommonPrefix {
         return longestPrefix;
     }
     public static void main(String[] args) {
-        int[] arr1 = {1,10,100};
-        int[] arr2 = {1000};
+        int[] arr1 = {1,10,100,1000,10000};
+        int[] arr2 = {100};
         System.out.print(longestCommonPrefix(arr1, arr2));
     }
 }
