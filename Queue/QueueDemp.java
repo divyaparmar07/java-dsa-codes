@@ -54,8 +54,52 @@ public class QueueDemp {
         }
         System.out.println();
     }
+
+    // using HashMap
+    public static int firstUniqChar(String s) {
+        // HashMap<Character, Integer> map = new HashMap<>();
+        // for (int i = 0; i < s.length(); i++) {
+        //     char ch = s.charAt(i);
+        //     map.put(ch,map.getOrDefault(ch, 0) + 1);
+        // }
+    
+        // int res = -1;
+        // for (int i = 0; i < s.length(); i++) {
+        //     if (map.containsKey(s.charAt(i)) && map.get(s.charAt(i)) == 1) {
+        //         res = i;
+        //         break;
+        //     }
+        // }
+
+        // return res; 
+        Queue<Character> q = new LinkedList<>();
+        int[] freq = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            q.add(ch);
+            freq[ch-'a']++;
+        }
+
+        System.out.println(q);
+        while (!q.isEmpty() && freq[q.peek() - 'a'] > 1) {
+            q.remove();
+        }
+
+        if (q.isEmpty()) {
+            return -1;
+        }
+        int index = -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (q.peek() == s.charAt(i)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
     public static void main(String[] args) {
-        // String str = "aabccxb";
+        String str = "leetcode";
+        System.out.println(firstUniqChar(str));
         // printNonRepeating(str);
 
         // Queue<Integer> q = new LinkedList<>();
@@ -78,17 +122,17 @@ public class QueueDemp {
         // System.out.println();
         // System.out.println(q);
 
-        Queue<Integer> q = new LinkedList<>();
-        q.add(1);
-        q.add(2);
-        q.add(3);
-        q.add(4);
-        q.add(5);
+        // Queue<Integer> q = new LinkedList<>();
+        // q.add(1);
+        // q.add(2);
+        // q.add(3);
+        // q.add(4);
+        // q.add(5);
 
-        reverse(q);
+        // reverse(q);
 
-        while (!q.isEmpty()) {
-            System.out.print(q.remove() + " ");
-        }
+        // while (!q.isEmpty()) {
+        //     System.out.print(q.remove() + " ");
+        // }
     }
 }

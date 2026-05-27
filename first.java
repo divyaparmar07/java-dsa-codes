@@ -148,8 +148,11 @@ public class first {
         // }
         // int[] arr = {1,2,3,4,5};
         // subArrays(arr);
-        int[] arr = {3,2,3};
-        System.out.println(majorityElement(arr));
+        // int[] arr = {3,2,3};
+        // System.out.println(majorityElement(arr));
+        String num1 = "11"; // 11
+        String num2 = "123"; // 123
+        System.out.println("Sum = " + addStrings(num1, num2));
     }
 
     // prime number function
@@ -234,6 +237,48 @@ public class first {
         //     high--;
         // }
         return freq;
+    }
+
+    // 11 123
+    public static String addStrings(String num1, String num2) {
+        long res = 0;
+
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        int carry = 0;
+        int c = 1;
+        while (i != -1 && j != -1) {
+            int a = num1.charAt(i) - '0';
+            int b = (int)num2.charAt(j) - '0';
+            int sum = a+b;
+            sum = sum % 10 + carry;
+            res += (sum * c);
+            carry = (a+b) / 10;
+            c *= 10;
+            i--;
+            j--;
+        }
+
+        while (i != -1) {
+            int a = num1.charAt(i) - '0';
+            res += ((a % 10) + carry) * c;
+            carry = a / 10;
+            c *= 10;
+            i--;
+        }
+
+        while (j != -1) {
+            int a = num1.charAt(j) - '0';
+            res += ((a % 10) + carry) * c;
+            carry = a / 10;
+            c *= 10;
+            j--;
+        }
+        
+        if (carry != 0) {
+            res += carry * c;
+        }
+        return String.valueOf(res);
     }
 }
 
