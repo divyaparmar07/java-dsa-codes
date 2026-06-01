@@ -37,4 +37,5 @@ Min or max based on that do sorting in greedy
 Max profit then based on profit sorting done
 Max work then ending time based on sorting done
 Max value and min weight then ratio based on sorting (fractional knapsack)
+
 */
