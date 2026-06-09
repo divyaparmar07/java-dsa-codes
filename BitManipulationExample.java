@@ -5,12 +5,13 @@ public class BitManipulationExample {
         Scanner sc = new Scanner(System.in);
         // int num = sc.nextInt();
         // OddEven(num);
-        System.out.println(countSetNumber(12));
+        // System.out.println(countSetNumber(12));
         // System.out.println(clearRangeOfBits(10,2,4)); //n=2515, i=2, j=7 answer=2307
         // System.out.println(fastExpo(5,3));
         // System.out.println(XorOfX(567));
+        System.out.println(getIthBit(6, 4));
         sc.close();
-        swap(10, 30);
+        // swap(10, 30);
     }
 
     // Check if number is Odd or Even
