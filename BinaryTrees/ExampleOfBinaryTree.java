@@ -1,5 +1,9 @@
 package BinaryTrees;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class ExampleOfBinaryTree {
     static class Node {
         int data;
@@ -59,27 +63,27 @@ public class ExampleOfBinaryTree {
     }
 
     // diameter of a tree
-    static class Info {
-        int diameter;
-        int height;
+    // static class Info {
+    //     int diameter;
+    //     int height;
 
-        public Info(int diameter, int height) {
-            this.diameter = diameter;
-            this.height = height;
-        }
-    }
-    public static Info diameter(Node root) { // O(n)
-        if (root == null)  {
-            return new Info(0, 0);
-        }
-        Info leftInfo = diameter(root.left);
-        Info rightInfo = diameter(root.right);
+    //     public Info(int diameter, int height) {
+    //         this.diameter = diameter;
+    //         this.height = height;
+    //     }
+    // }
+    // public static Info diameter(Node root) { // O(n)
+    //     if (root == null)  {
+    //         return new Info(0, 0);
+    //     }
+    //     Info leftInfo = diameter(root.left);
+    //     Info rightInfo = diameter(root.right);
 
-        int diam = Math.max(Math.max(leftInfo.diameter, rightInfo.diameter), leftInfo.height + rightInfo.height + 1);
-        int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+    //     int diam = Math.max(Math.max(leftInfo.diameter, rightInfo.diameter), leftInfo.height + rightInfo.height + 1);
+    //     int height = Math.max(leftInfo.height, rightInfo.height) + 1;
 
-        return new Info(diam, height);
-    }
+    //     return new Info(diam, height);
+    // }
 
     // subtree of the another tree
     public static boolean isSubtree(Node root, Node subRoot) {
@@ -117,6 +121,54 @@ public class ExampleOfBinaryTree {
         return true;
     }
 
+    static class Info{
+        Node node;
+        int hd; // horizontal distance
+
+        public Info(Node node, int hd) {
+            this.node = node;
+            this.hd = hd;
+        }
+    }
+    public static void topView(Node root) {
+        // level Order
+        Queue<Info> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>();
+
+        int min = 0, max = 0;
+        q.add(new Info(root, 0));
+        q.add(null); //when single level over
+        
+        while (!q.isEmpty()) {
+            Info curr = q.remove();
+            if (curr == null) {
+                if (q.isEmpty()) {
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {
+                if (!map.containsKey(curr.hd)) { // first time my horizontal distance is occurring
+                    map.put(curr.hd, curr.node);
+                }
+
+                if (curr.node.left != null) {
+                    q.add(new Info(curr.node.left, curr.hd-1));
+                    min = Math.min(min, curr.hd-1);
+                }
+                if (curr.node.right != null) {
+                    q.add(new Info(curr.node.right, curr.hd+1));
+                    max = Math.max(max, curr.hd+1);
+                }
+            }
+        }
+
+        for (int i = min; i <= max; i++) {
+            System.out.print(map.get(i).data + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         /*
                     1
@@ -139,15 +191,17 @@ public class ExampleOfBinaryTree {
               4   5
        */
 
-       Node subRoot = new Node(2);
-       subRoot.left = new Node(4);
-       subRoot.right = new Node(5);
+    //    Node subRoot = new Node(2);
+    //    subRoot.left = new Node(4);
+    //    subRoot.right = new Node(5);
 
     //    System.out.println("Height is : " + height(root));
     //    System.out.println("Count is : " + count(root));
     //    System.out.println("Sum is : " + sum(root));
     //    System.out.println("Diameter is : " + diameter(root).diameter);
 
-        System.out.println(isSubtree(root, subRoot));
+        // System.out.println(isSubtree(root, subRoot));
+
+        topView(root);
     }
 }
