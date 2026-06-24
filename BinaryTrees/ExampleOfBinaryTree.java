@@ -50,6 +50,7 @@ public class ExampleOfBinaryTree {
         return leftSum + rightSum + root.data;
     }
 
+    // Maximum depth of binary tree / Diameter of a tree
     public static int diameter2(Node root) { // TC = O(n2)
         if (root == null) {
             return 0;

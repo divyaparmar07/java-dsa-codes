@@ -437,13 +437,13 @@ public class LinkedList {
         // ll.deleteNthfromEnd(3);
         // ll.print();
 
-        // ll.addLast(1);
-        // ll.addLast(2);
-        // ll.addLast(1);
-        // ll.addLast(1);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
 
         // ll.print(); //1->2->2->1->null
-        // System.out.println(ll.checkPalindrome());
+        System.out.println(ll.checkPalindrome());
 
         // head = new Node(1);
         // Node temp = new Node(2);
